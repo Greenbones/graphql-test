@@ -15,7 +15,7 @@ namespace MDT.GraphQLData.Models.GraphQL
             Field(x => x.Breed).Description("Dog Breed");
 
             Field<OwnerType>("owner",
-                resolve: context => ownerContext.Owners.FirstOrDefault(owner => owner.Id == context.Source.Owner.Id));
+                resolve: context => context.Source.Owner);
         }
     }
 }

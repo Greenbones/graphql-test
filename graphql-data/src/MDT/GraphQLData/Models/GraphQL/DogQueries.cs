@@ -19,7 +19,7 @@ namespace MDT.GraphQLData.Models.GraphQL
         public void initialize(ObjectGraphType queryType)
         {
             queryType.Field<ListGraphType<DogType>>("allDogs",
-                resolve: context => _dogContext.Dogs.Include(dog => dog.Owner).ToList()); //Load Owners as well, so that we have the full data set for GraphQL
+                resolve: context => _dogContext.Dogs.Include(dog => dog.Owner).ToList()); //Load Owners as well, so that we have the full data set for GraphQL. Let's DogType access the owner for each dog.
 
             queryType.Field<DogType>("dog",
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "Dog Id" }),
